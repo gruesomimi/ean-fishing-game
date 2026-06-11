@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #001f3f, #003f5c, #0077be);
+  color: white;
+  overflow: hidden;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.input-box {
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 220px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #00c2ff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background: #00a3d6;
+}
+
+#questionBox {
+  margin-top: 40px;
+  padding: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* SEA FLOATING ANIMATION */
+.fish, .bubble {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 12s infinite linear;
+}
+
+.fish:nth-child(1) { top: 20%; left: -10%; }
+.fish:nth-child(2) { top: 50%; left: -20%; }
+.fish:nth-child(3) { top: 70%; left: -15%; }
+
+.bubble:nth-child(4) { left: 10%; }
+.bubble:nth-child(5) { left: 50%; }
+.bubble:nth-child(6) { left: 80%; }
+
+@keyframes float {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(120vw); }
+}
