@@ -22,12 +22,13 @@ const questions = {
 };
 
 function showQuestion() {
-  let num = document.getElementById("qNumber").value;
-  let display = document.getElementById("questionText");
+  const num = document.getElementById("qNumber").value;
+  const display = document.getElementById("questionText");
 
-  if (questions[num]) {
-    display.innerText = "🎣 " + questions[num];
-  } else {
-    display.innerText = "❌ Please choose a number between 1–20!";
+  if (num === "" || num < 1 || num > 20) {
+    display.innerText = "❌ Please enter a number between 1–20!";
+    return;
   }
+
+  display.innerText = "🎣 " + questions[num];
 }
