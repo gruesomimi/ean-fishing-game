@@ -1,23 +1,24 @@
-/* RESET */
-* {
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* FORCE BACKGROUND (PREVENT WHITE SCREEN) */
-body {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+
   font-family: Arial, sans-serif;
   color: white;
+
   background: radial-gradient(circle at 50% 20%, #1b3c6b, #020b1a);
 }
 
-/* BACKGROUND LAYER */
+/* BACKGROUND LAYER (FIX WHITE SCREEN) */
 .bg {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
   background: radial-gradient(circle at 50% 30%, #144a7c, #020b1a);
   z-index: -10;
 }
@@ -28,7 +29,7 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
-  animation: glow 6s infinite ease-in-out;
+  animation: glow 6s ease-in-out infinite;
   z-index: -9;
 }
 
@@ -40,18 +41,18 @@ body {
 /* PARTICLES */
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   background: rgba(255,255,255,0.5);
   border-radius: 50%;
   animation: rise 10s linear infinite;
 }
 
-.p1 { left: 20%; bottom: 0; }
-.p2 { left: 40%; bottom: 10%; }
-.p3 { left: 60%; bottom: 5%; }
-.p4 { left: 80%; bottom: 15%; }
-.p5 { left: 10%; bottom: 20%; }
+.p1 { left: 15%; bottom: 0; }
+.p2 { left: 35%; bottom: 10%; }
+.p3 { left: 55%; bottom: 5%; }
+.p4 { left: 75%; bottom: 15%; }
+.p5 { left: 90%; bottom: 8%; }
 
 @keyframes rise {
   from { transform: translateY(0); }
@@ -61,14 +62,14 @@ body {
 /* FISH */
 .fish {
   position: absolute;
-  font-size: 2rem;
+  font-size: 2.2rem;
   animation: swim 14s linear infinite;
 }
 
-.f1 { top: 30%; left: -100px; }
-.f2 { top: 50%; left: -200px; animation-duration: 18s; }
-.f3 { top: 70%; left: -300px; animation-duration: 12s; }
-.f4 { top: 40%; left: -400px; animation-duration: 16s; }
+.f1 { top: 25%; left: -120px; }
+.f2 { top: 45%; left: -200px; animation-duration: 18s; }
+.f3 { top: 65%; left: -300px; animation-duration: 12s; }
+.f4 { top: 35%; left: -400px; animation-duration: 16s; }
 
 @keyframes swim {
   from { transform: translateX(-100px); }
@@ -79,7 +80,7 @@ body {
 .coral {
   position: absolute;
   bottom: 5%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   animation: sway 4s ease-in-out infinite;
 }
 
@@ -92,42 +93,51 @@ body {
   50% { transform: rotate(5deg); }
 }
 
-/* CENTER BOX */
+/* CENTER UI (BIGGER FOR IPAD) */
 .container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
-  padding: 25px;
 
-  background: rgba(0, 20, 40, 0.65);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
+  width: min(90%, 700px);
+  padding: 45px;
+
+  background: rgba(0, 20, 40, 0.7);
+  backdrop-filter: blur(14px);
+
+  border-radius: 25px;
   text-align: center;
-  z-index: 10;
+
   border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* TEXT */
+h1 {
+  font-size: 2.4rem;
 }
 
 /* INPUT */
 input {
-  width: 80%;
-  padding: 10px;
+  width: 85%;
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
-  margin-top: 10px;
-  outline: none;
+  margin-top: 15px;
 }
 
 /* BUTTON */
 button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border-radius: 10px;
+  margin-top: 15px;
+  padding: 15px 22px;
+  font-size: 1.1rem;
+  border-radius: 12px;
   border: none;
   background: #4fc3f7;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -137,6 +147,15 @@ button:hover {
 
 /* OUTPUT */
 #questionBox {
-  margin-top: 15px;
-  font-size: 1.2rem;
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+
+/* IPAD SAFETY */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fish, .particle {
+  will-change: transform;
 }
