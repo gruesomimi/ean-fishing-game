@@ -1,67 +1,115 @@
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: linear-gradient(to bottom, #001f3f, #003f5c, #0077be);
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
-h1 {
-  margin-top: 20px;
+/* SKY GRADIENT */
+.sky {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, #6ec6ff, #b3e5ff);
 }
 
-.input-box {
-  margin-top: 20px;
+/* SUN */
+.sun {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #fff176, #ffca28);
+  border-radius: 50%;
+  box-shadow: 0 0 40px #ffd54f;
+}
+
+/* OCEAN */
+.ocean {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(to bottom, #1e88e5, #01579b);
+  animation: wave 5s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0%,100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* CORAL REEF (bottom decoration) */
+.reef {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(to top, #ffcc80, #ffb74d);
+}
+
+/* FLOATING SEA LIFE */
+.float {
+  position: absolute;
+  font-size: 2rem;
+  animation: swim 12s linear infinite;
+  opacity: 0.9;
+}
+
+.f1 { top: 50%; left: -80px; }
+.f2 { top: 30%; left: -120px; animation-duration: 18s; }
+.f3 { top: 65%; left: -150px; animation-duration: 14s; }
+.f4 { top: 20%; left: -200px; animation-duration: 20s; }
+.f5 { top: 75%; left: -250px; animation-duration: 16s; }
+
+@keyframes swim {
+  from { transform: translateX(-100px) rotate(0deg); }
+  to { transform: translateX(120vw) rotate(360deg); }
+}
+
+/* CENTER CARD */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  padding: 25px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  text-align: center;
 }
 
 input {
+  width: 80%;
   padding: 10px;
   border-radius: 10px;
   border: none;
-  width: 220px;
+  margin-top: 10px;
 }
 
 button {
+  margin-top: 10px;
   padding: 10px 15px;
-  border: none;
   border-radius: 10px;
-  background: #00c2ff;
+  border: none;
+  background: #ffd166;
+  font-weight: bold;
   cursor: pointer;
-  margin-left: 10px;
 }
 
 button:hover {
-  background: #00a3d6;
+  background: #ffb703;
 }
 
 #questionBox {
-  margin-top: 40px;
-  padding: 20px;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  background: rgba(255,255,255,0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
-}
-
-/* SEA FLOATING ANIMATION */
-.fish, .bubble {
-  position: absolute;
-  font-size: 2rem;
-  animation: float 12s infinite linear;
-}
-
-.fish:nth-child(1) { top: 20%; left: -10%; }
-.fish:nth-child(2) { top: 50%; left: -20%; }
-.fish:nth-child(3) { top: 70%; left: -15%; }
-
-.bubble:nth-child(4) { left: 10%; }
-.bubble:nth-child(5) { left: 50%; }
-.bubble:nth-child(6) { left: 80%; }
-
-@keyframes float {
-  from { transform: translateX(-100px); }
-  to { transform: translateX(120vw); }
+  margin-top: 15px;
+  font-size: 1.2rem;
 }
