@@ -1,60 +1,78 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* FORCE BACKGROUND (PREVENT WHITE SCREEN) */
 body {
   overflow: hidden;
   font-family: Arial, sans-serif;
   color: white;
-}
-
-/* DEEP SEA BACKGROUND */
-.deep-sea {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background: radial-gradient(circle at 50% 20%, #1b3c6b, #020b1a);
 }
 
-/* LIGHT RAYS FROM SURFACE */
-.light-rays {
-  position: absolute;
+/* BACKGROUND LAYER */
+.bg {
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.08),
-    transparent,
-    transparent
-  );
-  animation: rays 6s infinite ease-in-out;
+  background: radial-gradient(circle at 50% 30%, #144a7c, #020b1a);
+  z-index: -10;
 }
 
-@keyframes rays {
+/* LIGHT RAYS */
+.light {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+  animation: glow 6s infinite ease-in-out;
+  z-index: -9;
+}
+
+@keyframes glow {
   0%,100% { opacity: 0.4; }
   50% { opacity: 0.8; }
 }
 
-/* PARTICLES (UNDERWATER DUST) */
+/* PARTICLES */
 .particle {
   position: absolute;
   width: 4px;
   height: 4px;
   background: rgba(255,255,255,0.5);
   border-radius: 50%;
-  animation: floatUp 10s linear infinite;
+  animation: rise 10s linear infinite;
 }
 
 .p1 { left: 20%; bottom: 0; }
-.p2 { left: 50%; bottom: 10%; }
-.p3 { left: 70%; bottom: 5%; }
-.p4 { left: 85%; bottom: 15%; }
+.p2 { left: 40%; bottom: 10%; }
+.p3 { left: 60%; bottom: 5%; }
+.p4 { left: 80%; bottom: 15%; }
+.p5 { left: 10%; bottom: 20%; }
 
-@keyframes floatUp {
+@keyframes rise {
   from { transform: translateY(0); }
   to { transform: translateY(-120vh); }
+}
+
+/* FISH */
+.fish {
+  position: absolute;
+  font-size: 2rem;
+  animation: swim 14s linear infinite;
+}
+
+.f1 { top: 30%; left: -100px; }
+.f2 { top: 50%; left: -200px; animation-duration: 18s; }
+.f3 { top: 70%; left: -300px; animation-duration: 12s; }
+.f4 { top: 40%; left: -400px; animation-duration: 16s; }
+
+@keyframes swim {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(120vw); }
 }
 
 /* CORALS */
@@ -62,10 +80,10 @@ body {
   position: absolute;
   bottom: 5%;
   font-size: 2rem;
-  animation: sway 4s infinite ease-in-out;
+  animation: sway 4s ease-in-out infinite;
 }
 
-.c1 { left: 15%; }
+.c1 { left: 20%; }
 .c2 { left: 50%; }
 .c3 { left: 80%; }
 
@@ -74,26 +92,7 @@ body {
   50% { transform: rotate(5deg); }
 }
 
-/* FISH LAYERS */
-.fish {
-  position: absolute;
-  font-size: 2rem;
-  animation: swim 12s linear infinite;
-  opacity: 0.9;
-}
-
-.f1 { top: 30%; left: -100px; }
-.f2 { top: 50%; left: -150px; animation-duration: 16s; }
-.f3 { top: 70%; left: -200px; animation-duration: 14s; }
-.f4 { top: 40%; left: -250px; animation-duration: 18s; }
-.f5 { top: 60%; left: -300px; animation-duration: 20s; }
-
-@keyframes swim {
-  from { transform: translateX(-100px); }
-  to { transform: translateX(120vw); }
-}
-
-/* CENTER UI */
+/* CENTER BOX */
 .container {
   position: absolute;
   top: 50%;
@@ -101,22 +100,26 @@ body {
   transform: translate(-50%, -50%);
   width: 380px;
   padding: 25px;
-  background: rgba(0, 20, 40, 0.6);
+
+  background: rgba(0, 20, 40, 0.65);
   backdrop-filter: blur(12px);
   border-radius: 20px;
   text-align: center;
+  z-index: 10;
   border: 1px solid rgba(255,255,255,0.2);
 }
 
+/* INPUT */
 input {
   width: 80%;
   padding: 10px;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
   margin-top: 10px;
   outline: none;
 }
 
+/* BUTTON */
 button {
   margin-top: 10px;
   padding: 10px 15px;
@@ -125,7 +128,6 @@ button {
   background: #4fc3f7;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 button:hover {
@@ -133,6 +135,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* OUTPUT */
 #questionBox {
   margin-top: 15px;
   font-size: 1.2rem;
