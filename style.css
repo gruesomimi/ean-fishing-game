@@ -10,11 +10,11 @@ body {
   color: white;
 }
 
-/* SKY GRADIENT */
+/* SKY */
 .sky {
   position: absolute;
   width: 100%;
-  height: 40%;
+  height: 35%;
   background: linear-gradient(to bottom, #6ec6ff, #b3e5ff);
 }
 
@@ -22,12 +22,31 @@ body {
 .sun {
   position: absolute;
   top: 5%;
-  right: 10%;
-  width: 80px;
-  height: 80px;
+  right: 8%;
+  width: 90px;
+  height: 90px;
   background: radial-gradient(circle, #fff176, #ffca28);
   border-radius: 50%;
-  box-shadow: 0 0 40px #ffd54f;
+  box-shadow: 0 0 50px #ffd54f;
+}
+
+/* CLOUDS */
+.cloud {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.8;
+  animation: cloudMove 25s linear infinite;
+}
+
+.c1 { top: 8%; left: -150px; }
+.c2 { top: 15%; left: -300px; animation-duration: 35s; }
+
+@keyframes cloudMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(120vw); }
 }
 
 /* OCEAN */
@@ -36,16 +55,25 @@ body {
   top: 35%;
   width: 100%;
   height: 45%;
-  background: linear-gradient(to bottom, #1e88e5, #01579b);
-  animation: wave 5s infinite ease-in-out;
+  background: linear-gradient(to bottom, #2196f3, #01579b);
 }
 
-@keyframes wave {
-  0%,100% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
+/* WAVE MOVEMENT */
+.wave {
+  position: absolute;
+  top: 35%;
+  width: 200%;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  animation: waveMove 6s linear infinite;
 }
 
-/* CORAL REEF (bottom decoration) */
+@keyframes waveMove {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0%); }
+}
+
+/* REEF */
 .reef {
   position: absolute;
   bottom: 0;
@@ -54,26 +82,43 @@ body {
   background: linear-gradient(to top, #ffcc80, #ffb74d);
 }
 
-/* FLOATING SEA LIFE */
-.float {
+/* BUBBLES */
+.bubble {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: bubbleUp 8s linear infinite;
+  opacity: 0.7;
+}
+
+.b1 { left: 10%; bottom: 10%; }
+.b2 { left: 40%; bottom: 5%; animation-duration: 10s; }
+.b3 { left: 70%; bottom: 15%; animation-duration: 7s; }
+.b4 { left: 85%; bottom: 8%; animation-duration: 9s; }
+
+@keyframes bubbleUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
+
+/* FISH (LAYERED MOTION) */
+.fish {
   position: absolute;
   font-size: 2rem;
-  animation: swim 12s linear infinite;
+  animation: swim 14s linear infinite;
   opacity: 0.9;
 }
 
-.f1 { top: 50%; left: -80px; }
-.f2 { top: 30%; left: -120px; animation-duration: 18s; }
-.f3 { top: 65%; left: -150px; animation-duration: 14s; }
-.f4 { top: 20%; left: -200px; animation-duration: 20s; }
-.f5 { top: 75%; left: -250px; animation-duration: 16s; }
+.f1 { top: 50%; left: -100px; }
+.f2 { top: 60%; left: -200px; animation-duration: 18s; }
+.f3 { top: 40%; left: -300px; animation-duration: 12s; }
+.f4 { top: 70%; left: -150px; animation-duration: 16s; }
 
 @keyframes swim {
-  from { transform: translateX(-100px) rotate(0deg); }
-  to { transform: translateX(120vw) rotate(360deg); }
+  from { transform: translateX(-100px); }
+  to { transform: translateX(120vw) rotate(10deg); }
 }
 
-/* CENTER CARD */
+/* CENTER UI */
 .container {
   position: absolute;
   top: 50%;
@@ -82,9 +127,10 @@ body {
   width: 380px;
   padding: 25px;
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
   text-align: center;
+  z-index: 10;
 }
 
 input {
@@ -103,10 +149,12 @@ button {
   background: #ffd166;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
   background: #ffb703;
+  transform: scale(1.05);
 }
 
 #questionBox {
